@@ -240,7 +240,7 @@ content:
                 label: متن لینک
                 type: string
               - name: kind
-                label: نوع کارت: channel / phone / none
+label: "نوع کارت (channel / phone / none)"
                 type: string
       - name: faq
         label: سؤالات متداول
