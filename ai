@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#10152b">
+<meta name="description" content="مدرسه هوش برتر؛ آموزش کاربردی هوش مصنوعی">
+<title>مدرسه هوش برتر</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap');
+
+:root {
+--bg:#0b1022;
+--panel:#121a33;
+--text:#f5f7ff;
+--muted:#aab4d1;
+--purple:#9878ff;
+--cyan:#56d9e8;
+--line:rgba(255,255,255,.1);
+--shadow:0 24px 70px rgba(0,0,0,.28);
+}
+
+* {box-sizing:border-box}
+
+html {
+scroll-behavior:smooth;
+scroll-padding-top:90px;
+}
+
+body {
+margin:0;
+background:var(--bg);
+color:var(--text);
+font-family:"Vazirmatn",Tahoma,sans-serif;
+line-height:1.8;
+overflow-x:hidden;
+}
+
+a {
+color:inherit;
+text-decoration:none;
+}
+
+button,input {font:inherit}
+
+.container {
+width:min(1160px,calc(100% - 40px));
+margin:auto;
+}
+
+.bg-glow {
+position:absolute;
+pointer-events:none;
+filter:blur(80px);
+opacity:.22;
+border-radius:50%;
+z-index:-1;
+}
+
+.glow-one {
+width:340px;
+height:340px;
+background:#7957ff;
+top:100px;
+right:-150px;
+}
+
+.glow-two {
+width:280px;
+height:280px;
+background:#00c5d9;
+top:550px;
+left:-130px;
+}
+
+header {
+position:sticky;
+top:0;
+z-index:20;
+background:rgba(11,16,34,.82);
+backdrop-filter:blur(18px);
+border-bottom:1px solid var(--line);
+}
+
+.nav {
+height:78px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:24px;
+}
+
+.brand {
+display:flex;
+align-items:center;
+gap:11px;
+font-weight:900;
+font-size:18px;
+white-space:nowrap;
+}
+
+.brand-mark {
+width:42px;
+height:42px;
+border-radius:14px;
+background:linear-gradient(135deg,var(--purple),#5bcbeb);
+display:grid;
+place-items:center;
+box-shadow:0 8px 24px #8064ff55;
+}
+
+.brand-mark svg {width:25px}
+
+.nav-links {
+display:flex;
+align-items:center;
+gap:30px;
+color:var(--muted);
+font-size:14px;
+}
+
+.nav-links a:hover {color:white}
+
+.nav-actions {
+display:flex;
+align-items:center;
+gap:12px;
+}
+
+.btn {
+border:0;
+border-radius:13px;
+padding:11px 20px;
+font-weight:700;
+cursor:pointer;
+transition:.2s;
+display:inline-flex;
+align-items:center;
+justify-content:center;
+gap:8px;
+}
+
+.btn:hover {
+transform:translateY(-2px);
+filter:brightness(1.08);
+}
+
+.btn-primary {
+color:#101329;
+background:linear-gradient(110deg,#b49aff,#66deea);
+box-shadow:0 10px 25px #7e6cff35;
+}
+
+.btn-ghost {
+background:rgba(255,255,255,.06);
+border:1px solid var(--line);
+color:var(--text);
+}
+
+.menu-toggle {
+display:none;
+background:none;
+border:1px solid var(--line);
+color:white;
+border-radius:10px;
+padding:8px 11px;
+}
+
+.hero {
+padding:88px 0 75px;
+position:relative;
+}
+
+.hero-grid {
+display:grid;
+grid-template-columns:1.08fr .92fr;
+align-items:center;
+gap:55px;
+}
+
+.eyebrow {
+display:inline-flex;
+align-items:center;
+gap:8px;
+color:#b9adff;
+background:#8b75ff18;
+border:1px solid #9b85ff40;
+border-radius:99px;
+padding:6px 13px;
+font-size:13px;
+font-weight:700;
+}
+
+.eyebrow i {
+width:7px;
+height:7px;
+background:var(--cyan);
+border-radius:50%;
+box-shadow:0 0 12px var(--cyan);
+}
+
+h1 {
+font-size:clamp(38px,5vw,64px);
+line-height:1.35;
+margin:20px 0 16px;
+font-weight:900;
+letter-spacing:-1.5px;
+}
+
+.gradient-text {
+background:linear-gradient(100deg,#bca7ff 10%,#6de2ec 85%);
+-webkit-background-clip:text;
+background-clip:text;
+color:transparent;
+}
+
+.hero-copy {
+color:var(--muted);
+font-size:17px;
+max-width:570px;
+margin:0 0 28px;
+}
+
+.hero-buttons {
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+}
+
+.hero-meta {
+display:flex;
+gap:24px;
+margin-top:35px;
+color:var(--muted);
+font-size:13px;
+flex-wrap:wrap;
+}
+
+.hero-meta strong {
+color:white;
+font-size:18px;
+display:block;
+}
+
+.visual {
+min-height:420px;
+position:relative;
+display:grid;
+place-items:center;
+}
+
+.orbit {
+width:350px;
+height:350px;
+border:1px solid #9c8cff45;
+border-radius:50%;
+position:absolute;
+animation:spin 32s linear infinite;
+}
+
+.orbit:before,.orbit:after {
+content:"";
+position:absolute;
+width:12px;
+height:12px;
+border-radius:50%;
+background:var(--cyan);
+box-shadow:0 0 20px var(--cyan);
+top:35px;
+right:42px;
+}
+
+.orbit:after {
+background:var(--purple);
+box-shadow:0 0 20px var(--purple);
+top:auto;
+right:auto;
+bottom:25px;
+left:65px;
+}
+
+@keyframes spin {
+to {transform:rotate(360deg)}
+}
+
+.ai-core {
+width:245px;
+height:245px;
+border-radius:40px;
+transform:rotate(-7deg);
+background:linear-gradient(145deg,#26365e,#171d3a 65%);
+border:1px solid #a89aff70;
+box-shadow:0 35px 90px #0008,inset 0 0 45px #8d79ff20;
+display:grid;
+place-items:center;
+position:relative;
+}
+
+.ai-core:before {
+content:"";
+position:absolute;
+inset:13px;
+border:1px solid #ffffff18;
+border-radius:30px;
+}
+
+.brain {
+font-size:100px;
+filter:drop-shadow(0 0 25px #9c83ff80);
+transform:rotate(7deg);
+}
+
+.float-card {
+position:absolute;
+background:#182342eF;
+border:1px solid var(--line);
+border-radius:16px;
+padding:12px 16px;
+box-shadow:var(--shadow);
+font-size:12px;
+color:var(--muted);
+backdrop-filter:blur(12px);
+}
+
+.float-card b {
+display:block;
+color:white;
+font-size:14px;
+}
+
+.float-one {top:55px;right:0}
+.float-two {bottom:55px;left:0}
+
+.mini-icon {
+display:inline-grid;
+place-items:center;
+width:28px;
+height:28px;
+border-radius:9px;
+background:#8e77ff2c;
+margin-left:7px;
+}
+
+section {padding:78px 0}
+
+.section-head {
+text-align:center;
+max-width:650px;
+margin:0 auto 42px;
+}
+
+.section-kicker {
+color:var(--cyan);
+font-weight:800;
+font-size:13px;
+}
+
+.section-head h2 {
+font-size:clamp(27px,3.4vw,39px);
+margin:8px 0 10px;
+}
+
+.section-head p {color:var(--muted);margin:0}
+
+.features {
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:18px;
+}
+
+.feature,.course,.step,.tool-card {
+background:linear-gradient(145deg,#17213f,#11182e);
+border:1px solid var(--line);
+border-radius:20px;
+padding:25px;
+transition:.25s;
+}
+
+.feature:hover,.course:hover,.tool-card:hover {
+transform:translateY(-5px);
+border-color:#a18aff70;
+}
+
+.feature-icon {
+width:48px;
+height:48px;
+border-radius:15px;
+display:grid;
+place-items:center;
+font-size:22px;
+background:#8b75ff20;
+margin-bottom:15px;
+}
+
+.feature h3,.course h3,.tool-card h3 {
+margin:0 0 8px;
+font-size:18px;
+}
+
+.feature p,.course p,.tool-card p {
+color:var(--muted);
+font-size:14px;
+margin:0;
+}
+
+.courses {
+background:linear-gradient(180deg,transparent,#11183180,transparent);
+}
+
+.course-grid {
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:18px;
+}
+
+.course {
+padding:0;
+overflow:hidden;
+}
+
+.course-art {
+height:150px;
+display:grid;
+place-items:center;
+font-size:52px;
+position:relative;
+overflow:hidden;
+}
+
+.course-art:before,.course-art:after {
+content:"";
+position:absolute;
+width:170px;
+height:170px;
+border:1px solid #ffffff22;
+border-radius:50%;
+}
+
+.course-art:after {width:115px;height:115px}
+
+.art-a {background:linear-gradient(135deg,#4c3d9a,#1a7391)}
+.art-b {background:linear-gradient(135deg,#7a4b9d,#304e9b)}
+.art-c {background:linear-gradient(135deg,#1e7a83,#343d88)}
+
+.course-art span {
+position:relative;
+z-index:1;
+filter:drop-shadow(0 8px 12px #0005);
+}
+
+.course-body {padding:22px}
+
+.course-tag {
+font-size:11px;
+color:var(--cyan);
+font-weight:800;
+}
+
+.course-info {
+display:flex;
+justify-content:space-between;
+border-top:1px solid var(--line);
+margin-top:18px;
+padding-top:13px;
+color:var(--muted);
+font-size:12px;
+}
+
+.path-grid {
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:13px;
+position:relative;
+}
+
+.step {
+padding:20px;
+position:relative;
+}
+
+.step-num {
+font-size:12px;
+color:var(--cyan);
+font-weight:900;
+}
+
+.step h3 {font-size:16px;margin:8px 0}
+
+.step p {
+font-size:13px;
+color:var(--muted);
+margin:0;
+}
+
+.tools-grid {
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:14px;
+}
+
+.tool-card {padding:19px}
+.tool-card .feature-icon {margin-bottom:12px}
+
+.cta {
+padding:45px;
+border-radius:26px;
+background:radial-gradient(circle at 10% 20%,#6f5acb66,transparent 40%),linear-gradient(110deg,#202b50,#172d48);
+border:1px solid #9c8cff55;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:25px;
+overflow:hidden;
+}
+
+.cta h2 {font-size:30px;margin:0 0 8px}
+.cta p {color:#c0c9e2;margin:0}
+
+.cta-actions {
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+}
+
+.faq-list {
+max-width:800px;
+margin:auto;
+display:grid;
+gap:12px;
+}
+
+.faq-item {
+border:1px solid var(--line);
+background:#131c35;
+border-radius:15px;
+overflow:hidden;
+}
+
+.faq-q {
+width:100%;
+border:0;
+background:none;
+color:white;
+text-align:right;
+padding:18px 20px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+cursor:pointer;
+font-weight:700;
+}
+
+.faq-a {
+max-height:0;
+overflow:hidden;
+transition:max-height .3s ease;
+color:var(--muted);
+font-size:14px;
+}
+
+.faq-a p {padding:0 20px 18px;margin:0}
+
+.faq-item.active .faq-a {max-height:140px}
+.faq-item.active .plus {transform:rotate(45deg)}
+
+.plus {
+font-size:23px;
+color:var(--cyan);
+transition:.2s;
+}
+
+footer {
+border-top:1px solid var(--line);
+padding:30px 0;
+color:var(--muted);
+font-size:13px;
+}
+
+.footer-row {
+display:flex;
+justify-content:space-between;
+gap:20px;
+align-items:center;
+flex-wrap:wrap;
+}
+
+.footer-links {
+display:flex;
+gap:20px;
+}
+
+.footer-links a:hover {color:white}
+
+.toast {
+position:fixed;
+bottom:22px;
+left:22px;
+background:#1d3150;
+border:1px solid #68dbe7;
+color:white;
+padding:13px 18px;
+border-radius:13px;
+box-shadow:var(--shadow);
+opacity:0;
+transform:translateY(15px);
+transition:.25s;
+z-index:50;
+pointer-events:none;
+}
+
+.toast.show {
+opacity:1;
+transform:translateY(0);
+}
+
+@media(max-width:900px) {
+.nav-links {gap:16px}
+.hero-grid {gap:20px}
+.visual {transform:scale(.88)}
+.tools-grid {grid-template-columns:repeat(2,1fr)}
+}
+
+@media(max-width:700px) {
+.container {width:min(100% - 30px,560px)}
+.nav {height:68px}
+.menu-toggle {display:block}
+
+.nav-links {
+display:none;
+position:absolute;
+top:68px;
+right:0;
+left:0;
+padding:18px 22px;
+background:#10172e;
+border-bottom:1px solid var(--line);
+flex-direction:column;
+align-items:stretch;
+gap:13px;
+}
+
+.nav-links.open {display:flex}
+.nav-actions .btn {display:none}
+.hero {padding:55px 0 35px}
+
+.hero-grid {
+grid-template-columns:1fr;
+text-align:center;
+}
+
+.hero-copy {
+margin-right:auto;
+margin-left:auto;
+font-size:15px;
+}
+
+.hero-buttons,.hero-meta {justify-content:center}
+
+.visual {
+min-height:330px;
+transform:scale(.82);
+margin:-10px 0;
+}
+
+.features,.course-grid {grid-template-columns:1fr}
+.path-grid {grid-template-columns:repeat(2,1fr)}
+section {padding:58px 0}
+
+.cta {
+padding:28px;
+display:block;
+text-align:center;
+}
+
+.cta-actions {
+justify-content:center;
+margin-top:22px;
+}
+
+.cta h2 {font-size:25px}
+
+.footer-row {
+justify-content:center;
+text-align:center;
+}
+
+.footer-links {justify-content:center}
+}
+
+@media(max-width:390px) {
+.path-grid,.tools-grid {grid-template-columns:1fr}
+.visual {transform:scale(.7);margin:-35px 0}
+.hero-meta {gap:15px}
+}
+
+@media(prefers-reduced-motion:reduce) {
+*,*::before,*::after {
+scroll-behavior:auto!important;
+animation:none!important;
+transition:none!important;
+}
+}
+</style>
+</head>
+
+<body>
+
+<div class="bg-glow glow-one"></div>
+<div class="bg-glow glow-two"></div>
+
+<header>
+<div class="container nav">
+
+<a class="brand" href="#home">
+<span class="brand-mark">✦</span>
+<span>مدرسه هوش برتر</span>
+</a>
+
+<nav class="nav-links" id="navLinks">
+<a href="#about">درباره مدرسه</a>
+<a href="#courses">دوره‌ها</a>
+<a href="#path">مسیر یادگیری</a>
+<a href="#tools">ابزارها</a>
+<a href="#contact">ارتباط با ما</a>
+<a href="#faq">سؤالات متداول</a>
+</nav>
+
+<div class="nav-actions">
+<a class="btn btn-primary" href="#courses">شروع یادگیری ←</a>
+<button class="menu-toggle" id="menuToggle">☰</button>
+</div>
+
+</div>
+</header>
+
+<main id="home">
+
+<section class="hero">
+<div class="container hero-grid">
+
+<div>
+<span class="eyebrow"><i></i> آینده را هوشمندانه یاد بگیر</span>
+
+<h1>
+با هوش مصنوعی،
+<br>
+<span class="gradient-text">هوشمندتر بساز!</span>
+</h1>
+
+<p class="hero-copy">
+اینجا قرار است هوش مصنوعی را ساده، کاربردی و قدم‌به‌قدم یاد بگیری؛ از اولین گفت‌وگو با ابزارهای AI تا ساختن ایده‌هایی که به واقعیت تبدیل می‌شوند.
+</p>
+
+<div class="hero-buttons">
+<a class="btn btn-primary" href="#courses">مشاهده دوره‌ها ←</a>
+<a class="btn btn-ghost" href="#path">مسیر یادگیری من</a>
+</div>
+
+<div class="hero-meta">
+<div><strong>از صفر</strong>بدون نیاز به پیش‌زمینه</div>
+<div><strong>کاملاً کاربردی</strong>با تمرین و پروژه</div>
+<div><strong>همراه تو</strong>در مسیر یادگیری</div>
+</div>
+</div>
+
+<div class="visual">
+<div class="orbit"></div>
+<div class="ai-core"><div class="brain">✧</div></div>
+<div class="float-card float-one">
+<span class="mini-icon">✦</span>
+<b>ایده تا اجرا</b>
+با کمک هوش مصنوعی
+</div>
+<div class="float-card float-two">
+<span class="mini-icon">⌘</span>
+<b>مهارت‌های آینده</b>
+یادگیری هوشمندانه
+</div>
+</div>
+
+</div>
+</section>
+
+<section id="about">
+<div class="container">
+
+<div class="section-head">
+<span class="section-kicker">چرا مدرسه هوش برتر؟</span>
+<h2>یادگیری ساده، نتیجه واقعی</h2>
+<p>هوش مصنوعی فقط یک موضوع جذاب نیست؛ مهارتی تازه برای بهتر فکر کردن، سریع‌تر ساختن و خلاقانه‌تر کار کردن است.</p>
+</div>
+
+<div class="features">
+
+<article class="feature">
+<div class="feature-icon">🧭</div>
+<h3>از پایه و مرحله‌به‌مرحله</h3>
+<p>مفاهیم را با زبان ساده یاد می‌گیری و بدون سردرگمی وارد دنیای ابزارهای هوشمند می‌شوی.</p>
+</article>
+
+<article class="feature">
+<div class="feature-icon">🛠️</div>
+<h3>تمرین‌های واقعی</h3>
+<p>به‌جای حفظ کردن اصطلاحات، با تمرین‌های کوچک و پروژه‌های کاربردی مهارتت را تقویت می‌کنی.</p>
+</article>
+
+<article class="feature">
+<div class="feature-icon">💡</div>
+<h3>خلاقیت در کنار فناوری</h3>
+<p>یاد می‌گیری چطور از AI به‌عنوان دستیار استفاده کنی و تصمیم نهایی را آگاهانه بگیری.</p>
+</article>
+
+</div>
+</div>
+</section>
+
+<section class="courses" id="courses">
+<div class="container">
+
+<div class="section-head">
+<span class="section-kicker">مسیرهای آموزشی</span>
+<h2>از کجا شروع کنیم؟</h2>
+<p>یک مسیر مناسب انتخاب کن و قدم اول را بردار. این دوره‌ها نمونه‌ای از مسیرهای پیشنهادی مدرسه هستند.</p>
+</div>
+
+<div class="course-grid">
+
+<article class="course">
+<div class="course-art art-a"><span>🤖</span></div>
+<div class="course-body">
+<span class="course-tag">سطح مقدماتی</span>
+<h3>آشنایی با دنیای هوش مصنوعی</h3>
+<p>مفاهیم پایه، کاربردها، محدودیت‌ها و شناخت ابزارهای پرکاربرد AI.</p>
+<div class="course-info">
+<span>◷ ۴ جلسه پیشنهادی</span>
+<span>مناسب شروع</span>
+</div>
+</div>
+</article>
+
+<article class="course">
+<div class="course-art art-b"><span>✍️</span></div>
+<div class="course-body">
+<span class="course-tag">مهارت کاربردی</span>
+<h3>هنر گفت‌وگو با هوش مصنوعی</h3>
+<p>نوشتن پرامپت مؤثر برای گرفتن پاسخ‌های دقیق‌تر و نتیجه‌های بهتر.</p>
+<div class="course-info">
+<span>◷ ۶ جلسه پیشنهادی</span>
+<span>تمرین‌محور</span>
+</div>
+</div>
+</article>
+
+<article class="course">
+<div class="course-art art-c"><span>🎨</span></div>
+<div class="course-body">
+<span class="course-tag">سطح خلاقیت</span>
+<h3>تولید محتوا با ابزارهای AI</h3>
+<p>آشنایی با تولید متن، تصویر، ارائه و ایده‌پردازی با ابزارهای هوشمند.</p>
+<div class="course-info">
+<span>◷ ۵ جلسه پیشنهادی</span>
+<span>پروژه‌محور</span>
+</div>
+</div>
+</article>
+
+</div>
+</div>
+</section>
+
+<section id="path">
+<div class="container">
+
+<div class="section-head">
+<span class="section-kicker">نقشه راه تو</span>
+<h2>چهار قدم تا استفاده حرفه‌ای</h2>
+<p>لازم نیست همه‌چیز را از روز اول بدانی؛ کافی است پیوسته جلو بروی.</p>
+</div>
+
+<div class="path-grid">
+
+<article class="step">
+<span class="step-num">قدم ۰۱</span>
+<h3>شناخت</h3>
+<p>با مفهوم هوش مصنوعی و فرصت‌ها و محدودیت‌های آن آشنا شو.</p>
+</article>
+
+<article class="step">
+<span class="step-num">قدم ۰۲</span>
+<h3>تعامل</h3>
+<p>یاد بگیر درخواست روشن بنویسی و پاسخ‌ها را ارزیابی کنی.</p>
+</article>
+
+<article class="step">
+<span class="step-num">قدم ۰۳</span>
+<h3>خلق کردن</h3>
+<p>برای حل یک مسئله واقعی، از ابزارهای مناسب کمک بگیر.</p>
+</article>
+
+<article class="step">
+<span class="step-num">قدم ۰۴</span>
+<h3>توسعه مهارت</h3>
+<p>پروژه‌هایت را بهتر کن و آموخته‌ها را در کارهای روزمره به‌کار ببر.</p>
+</article>
+
+</div>
+</div>
+</section>
+
+<section id="tools" class="courses">
+<div class="container">
+
+<div class="section-head">
+<span class="section-kicker">جعبه ابزار هوشمند</span>
+<h2>با ابزارهای متنوع آشنا شو</h2>
+<p>هر ابزار برای کاری مناسب است؛ مهم این است که مسئله را بشناسی و ابزار درست را انتخاب کنی.</p>
+</div>
+
+<div class="tools-grid">
+
+<article class="tool-card">
+<div class="feature-icon">💬</div>
+<h3>دستیارهای متنی</h3>
+<p>برای پرسش‌وپاسخ، یادگیری، خلاصه‌سازی و ایده‌پردازی.</p>
+</article>
+
+<article class="tool-card">
+<div class="feature-icon">🖼️</div>
+<h3>ساخت تصویر</h3>
+<p>برای تبدیل توصیف‌ها و ایده‌ها به تصویرهای خلاقانه.</p>
+</article>
+
+<article class="tool-card">
+<div class="feature-icon">🎬</div>
+<h3>تولید ویدئو</h3>
+<p>برای ساخت و توسعه محتوای ویدئویی با کمک AI.</p>
+</article>
+
+<article class="tool-card">
+<div class="feature-icon">📊</div>
+<h3>تحلیل و پژوهش</h3>
+<p>برای نظم دادن به اطلاعات و کمک به بررسی داده‌ها.</p>
+</article>
+
+</div>
+</div>
+</section>
+
+<section>
+<div class="container">
+<div class="cta">
+
+<div>
+<h2>آماده‌ای هوشمندانه‌تر یاد بگیری؟</h2>
+<p>یادگیری را با یک قدم کوچک شروع کن؛ ادامه مسیر با توست.</p>
+</div>
+
+<div class="cta-actions">
+<a class="btn btn-primary" href="#courses">دیدن مسیرهای آموزشی ←</a>
+<a class="btn btn-ghost" href="#faq">سؤالات متداول</a>
+</div>
+
+</div>
+</div>
+</section>
+
+<section id="contact">
+<div class="container">
+
+<div class="section-head">
+<span class="section-kicker">راه‌های ارتباطی</span>
+<h2>با مدرسه هوش برتر در ارتباط باش</h2>
+<p>برای دریافت اطلاعات بیشتر و پیگیری آموزش‌ها از راه‌های زیر با ما در ارتباط باش.</p>
+</div>
+
+<div class="features">
+
+<a class="feature" href="https://eitaa.com/ai_bartar" target="_blank" rel="noopener noreferrer">
+<div class="feature-icon">✈️</div>
+<h3>کانال ایتا</h3>
+<p dir="ltr" style="color:#72dce8;font-weight:700;margin-top:8px">@ai_bartar</p>
+<span style="display:inline-block;margin-top:14px;color:#bca7ff;font-size:13px">ورود به کانال ←</span>
+</a>
+
+<a class="feature" href="tel:+989302998877">
+<div class="feature-icon">📞</div>
+<h3>شماره تماس</h3>
+<p dir="ltr" style="color:#72dce8;font-weight:700;margin-top:8px">۰۹۳۰۲۹۹۸۸۷۷</p>
+<span style="display:inline-block;margin-top:14px;color:#bca7ff;font-size:13px">تماس با ما ←</span>
+</a>
+
+<div class="feature">
+<div class="feature-icon">💬</div>
+<h3>همراه مدرسه باش</h3>
+<p>برای اطلاع از آموزش‌ها، مطالب تازه و برنامه‌های مدرسه، کانال ایتا را دنبال کن.</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<section id="faq">
+<div class="container">
+
+<div class="section-head">
+<span class="section-kicker">پاسخ پرسش‌ها</span>
+<h2>سؤالات متداول</h2>
+<p>چند پاسخ کوتاه برای شروع مسیر یادگیری.</p>
+</div>
+
+<div class="faq-list">
+
+<div class="faq-item">
+<button class="faq-q" aria-expanded="false">
+برای یادگیری هوش مصنوعی باید برنامه‌نویسی بلد باشم؟
+<span class="plus">+</span>
+</button>
+<div class="faq-a">
+<p>خیر. برای شروع و استفاده از بسیاری از ابزارهای هوش مصنوعی به برنامه‌نویسی نیاز نداری. می‌توانی از مفاهیم پایه و کار با ابزارها آغاز کنی.</p>
+</div>
+</div>
+
+<div class="faq-item">
+<button class="faq-q" aria-expanded="false">
+از چه سنی می‌توان یادگیری را شروع کرد؟
+<span class="plus">+</span>
+</button>
+<div class="faq-a">
+<p>یادگیری مفاهیم و استفاده مسئولانه از ابزارها را می‌توان متناسب با سن و سطح دانش آغاز کرد. رعایت حریم خصوصی و بررسی صحت پاسخ‌ها مهم است.</p>
+</div>
+</div>
+
+<div class="faq-item">
+<button class="faq-q" aria-expanded="false">
+آیا پاسخ‌های هوش مصنوعی همیشه درست هستند؟
+<span class="plus">+</span>
+</button>
+<div class="faq-a">
+<p>خیر. ابزارهای هوش مصنوعی ممکن است اشتباه کنند یا اطلاعات ساختگی ارائه دهند؛ پاسخ‌های مهم را با منابع معتبر بررسی کن.</p>
+</div>
+</div>
+
+<div class="faq-item">
+<button class="faq-q" aria-expanded="false">
+این سایت امکان ثبت‌نام در دوره‌ها را دارد؟
+<span class="plus">+</span>
+</button>
+<div class="faq-a">
+<p>این نسخه، نمونه اولیه و معرفی مدرسه است. برای ثبت‌نام واقعی باید فرم و سامانه ثبت‌نام به آن متصل شود.</p>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+</main>
+
+<footer>
+<div class="container footer-row">
+
+<a class="brand" href="#home">
+<span class="brand-mark">✦</span>
+<span>مدرسه هوش برتر</span>
+</a>
+
+<span>© تمامی حقوق برای مدرسه هوش برتر
