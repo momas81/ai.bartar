@@ -1,0 +1,291 @@
+media:
+  input: media
+  output: /media
+
+content:
+  - name: site-content
+    label: محتوای سایت
+    type: file
+    path: content/site.json
+    format: json
+    fields:
+      - name: site
+        label: اطلاعات عمومی
+        type: object
+        fields:
+          - name: title
+            label: نام سایت
+            type: string
+          - name: description
+            label: توضیحات سایت
+            type: text
+          - name: channel_url
+            label: لینک کانال ایتا
+            type: string
+          - name: channel_id
+            label: شناسه کانال
+            type: string
+          - name: phone_display
+            label: شماره نمایشی
+            type: string
+          - name: phone_link
+            label: شماره برای لینک تماس
+            type: string
+          - name: footer_text
+            label: متن پابرگ
+            type: string
+      - name: hero
+        label: بخش اول صفحه
+        type: object
+        fields:
+          - name: eyebrow
+            label: متن کوتاه بالای عنوان
+            type: string
+          - name: title_line1
+            label: خط اول عنوان
+            type: string
+          - name: title_line2
+            label: خط دوم عنوان
+            type: string
+          - name: description
+            label: توضیحات
+            type: text
+          - name: button1
+            label: متن دکمه اول
+            type: string
+          - name: button2
+            label: متن دکمه دوم
+            type: string
+          - name: meta1_title
+            label: عنوان ویژگی اول
+            type: string
+          - name: meta1_text
+            label: توضیح ویژگی اول
+            type: string
+          - name: meta2_title
+            label: عنوان ویژگی دوم
+            type: string
+          - name: meta2_text
+            label: توضیح ویژگی دوم
+            type: string
+          - name: meta3_title
+            label: عنوان ویژگی سوم
+            type: string
+          - name: meta3_text
+            label: توضیح ویژگی سوم
+            type: string
+      - name: about
+        label: درباره مدرسه
+        type: object
+        fields:
+          - name: kicker
+            label: متن کوچک
+            type: string
+          - name: title
+            label: عنوان
+            type: string
+          - name: description
+            label: توضیحات
+            type: text
+          - name: features
+            label: کارت‌های ویژگی
+            type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{title} ({index})"
+            fields:
+              - name: icon
+                label: نماد
+                type: string
+              - name: title
+                label: عنوان
+                type: string
+              - name: description
+                label: توضیحات
+                type: text
+      - name: courses
+        label: دوره‌ها
+        type: object
+        fields:
+          - name: kicker
+            label: متن کوچک
+            type: string
+          - name: title
+            label: عنوان
+            type: string
+          - name: description
+            label: توضیحات
+            type: text
+          - name: items
+            label: فهرست دوره‌ها
+            type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{title} ({index})"
+            fields:
+              - name: icon
+                label: نماد
+                type: string
+              - name: art
+                label: رنگ کارت (art-a / art-b / art-c)
+                type: string
+              - name: tag
+                label: برچسب دوره
+                type: string
+              - name: title
+                label: عنوان دوره
+                type: string
+              - name: description
+                label: توضیحات دوره
+                type: text
+              - name: duration
+                label: مدت دوره
+                type: string
+              - name: level
+                label: ویژگی دوره
+                type: string
+      - name: path
+        label: مسیر یادگیری
+        type: object
+        fields:
+          - name: kicker
+            label: متن کوچک
+            type: string
+          - name: title
+            label: عنوان
+            type: string
+          - name: description
+            label: توضیحات
+            type: text
+          - name: items
+            label: گام‌های مسیر
+            type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{title} ({index})"
+            fields:
+              - name: number
+                label: شماره گام
+                type: string
+              - name: title
+                label: عنوان
+                type: string
+              - name: description
+                label: توضیحات
+                type: text
+      - name: tools
+        label: ابزارها
+        type: object
+        fields:
+          - name: kicker
+            label: متن کوچک
+            type: string
+          - name: title
+            label: عنوان
+            type: string
+          - name: description
+            label: توضیحات
+            type: text
+          - name: items
+            label: فهرست ابزارها
+            type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{title} ({index})"
+            fields:
+              - name: icon
+                label: نماد
+                type: string
+              - name: title
+                label: عنوان
+                type: string
+              - name: description
+                label: توضیحات
+                type: text
+      - name: contact
+        label: ارتباط با ما
+        type: object
+        fields:
+          - name: kicker
+            label: متن کوچک
+            type: string
+          - name: title
+            label: عنوان
+            type: string
+          - name: description
+            label: توضیحات
+            type: text
+          - name: cards
+            label: کارت‌های ارتباطی
+            type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{title} ({index})"
+            fields:
+              - name: icon
+                label: نماد
+                type: string
+              - name: title
+                label: عنوان
+                type: string
+              - name: description
+                label: توضیحات
+                type: text
+              - name: link_label
+                label: متن لینک
+                type: string
+              - name: kind
+                label: نوع کارت: channel / phone / none
+                type: string
+      - name: faq
+        label: سؤالات متداول
+        type: object
+        fields:
+          - name: kicker
+            label: متن کوچک
+            type: string
+          - name: title
+            label: عنوان
+            type: string
+          - name: description
+            label: توضیحات
+            type: text
+          - name: items
+            label: پرسش و پاسخ‌ها
+            type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{title} ({index})"
+            fields:
+              - name: question
+                label: پرسش
+                type: text
+              - name: answer
+                label: پاسخ
+                type: text
+      - name: cta
+        label: بخش دعوت به یادگیری
+        type: object
+        fields:
+          - name: title
+            label: عنوان
+            type: string
+          - name: description
+            label: توضیحات
+            type: text
+          - name: button1
+            label: متن دکمه اول
+            type: string
+          - name: button2
+            label: متن دکمه دوم
+            type: string
+
+settings:
+  content:
+    merge: true
